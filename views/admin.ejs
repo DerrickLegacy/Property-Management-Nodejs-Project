@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin-Uploads</title>
+    <link rel="stylesheet" href="/css/style.css">  
+</head>
+<body >
+  <%- include('partial/header')%>
+    <div class="panel_list">
+        <div  style="width: fit-content; display: relative; margin: 0px auto;" class="approvals">
+            <h1 class="approval">Admin Approvals</h1>
+            <hr>
+        </div>
+        <div class="menu">
+            <span style="background-color: rgb(234, 217, 205); " id="admin-link">
+                <a style="color: black;" href="/admin">Uploaded</a>
+            </span>
+            <span id="admin-link">
+                <a href="/editedproperty">Edited</a>
+            </span>
+            <span id="admin-link">
+                <a href="/deleted">Deleted</a>
+            </span>
+        </div>
+    </div>   
+    <div class="admin-detail">
+        <img src="/img/pic1.jpg" height="30px" width="30px" style="align-items: center;" alt="Admin photo">
+        <small><a style="text-decoration: none;" href="">My Profile</a></small>
+    </div>
+    <!-- Uploads -->
+    <h2  style="margin-top: 10px;" class="">Land Lord Uploads</h2>
+    <% if (results.length>0) { 
+      results.forEach( function(data){ %>
+        <div class="recent_post" style="width: 70%; margin-left: 30%;">
+          <div class="admin-Uploads">
+            <div class="pending">
+              <img src="img/<%= data.image %>" alt="Property Photo" style="border: radius 10px;" height="100px" width="100%">
+            </div>
+            <!-- Land lord and Property details -->
+            <div class="lease">
+              Owner's Name: <%= data.firstName%> <%= data.secondName %> <br>
+              Email:<a style="color: blue; text-decoration: none;" href="mailto:<%= data.email  %>"  ><%= data.email  %></a> <br>
+              Property Name: <%= data.propertyName %> <br>
+              Type: <%= data.type %> <br>
+              Date Of Post: <%= data.postDate %>
+              Cost: <%= data.cost %> <br>
+            </div>
+            <!-- Amin Approvals-->
+            <div class="lease decision">
+              <a href="/admin/approve/<%= data.propertyId %>/<%= data.email %>">
+                <button id="decision" class="btn btn-primary" style="border-radius: 5px;">Approve</button> <br>
+              </a>
+              <button id="decision" class="btn btn-secondary">Deny</button> <br>
+            </div>
+          </div>
+      </div>
+
+    <%  });
+    }else{ %>
+      <p style=" color: brown; ">All Property Were Approved</p>
+    <% } %>  
+    
+
+    <%- include('partial/footer')%>
+</body>
+</html>

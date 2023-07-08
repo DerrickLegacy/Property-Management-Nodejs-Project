@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/69c7fa9a86.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="script.js"></script>
+    <title>Create an account</title>
+</head>
+<body class="login_bckg">
+    <div >
+        <!-- <i class="fa-solid fa-arrow-left fa-3x" style="color: cyan" height></i> -->
+        
+        <div class = "entire" style="padding-top: 0px;">
+            <div class="top">
+                <div>
+               <!-- <h1>Welcome to Global Properties</h1> -->
+                    <p>Enter Your Email or Phone Number to Get Started</p>
+                </div>
+            </div>
+            <form action="/register/One" method="POST" id="myForm">
+            <div class="fields" >
+                <div >
+                    <p>
+                        <input class="textbox" type="email" id="email" name="username" placeholder="Enter email" required>
+                    </p>
+                </div>
+            </div>
+            <div class="continue">
+                <input type="submit" onclick="validation()" value="CONTINUE" class="textbox"  style="background-color: #4287f5">
+            </div>
+        </form>
+            <div class="footer">
+                <div>
+                    <p>Contact Our Support Team For Support At <a href="globalsupport@gmail.com" style="color: blue;">globalsupport@gmail.com</a></p>
+                </div>
+           </div>
+        </div>
+    </div>
+    <script>
+        
+        function validation(){
+            const username = document.getElementById('email').value
+            if(username.includes('@admin')){
+                window.alert("You have included @admin in your username")
+            }
+        }
+        
+    </script>
+</body>
+</html>

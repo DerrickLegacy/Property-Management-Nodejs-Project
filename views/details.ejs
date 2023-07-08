@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Global Masters Uganda</title>
+    <meta content="width=device-width, initial-s  cale=1.0" name="viewport">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+      body{
+        background-color: rgb(68, 68, 68);
+      }
+      .propImage{
+        height: 400px;
+        width: 35%;
+        border-right: 1px solid black;
+        border-radius: 5px;
+      }
+      .propDetails{
+        font-size: x-large;
+        height: 400px;
+        width: 50%;
+        position: relative;
+        margin-left:35%;
+        margin-top: -400px;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgb(221, 245, 220);
+      }
+      .main-form{
+        position: relative;
+        width: 90%;
+        margin: 10% 10%;
+        
+      }
+      .head{
+        color: black;
+        font-size: x-large;
+        position: relative;
+        height: 10px;
+      }
+      .lease-btn{
+        background-color: rgb(84, 124, 73);
+        margin-left: 80%;
+        height: 40px;
+        border-radius: 5px;
+      }
+      .head{
+        font-size: xx-large;
+      }
+      .lease-btn:hover{
+        background-color: rgb(68, 68, 68);
+      }
+    </style>
+</head>
+
+<body>
+
+    <hr>
+  <div class="head">
+    <a href="/homepage">
+      <button class="btn btn-primary ">
+        <p> X</p>
+      </button>
+    </a>
+  </div>
+  <div class="main-form">
+      <div class="propImage">
+        <img src="/img/<%= property.image %>" alt="Property Image" height="400px" width="95%">
+      </div> 
+      <div class="propDetails">
+        <div class="top" style="margin-left: 10px;">
+          <h3 align="center">Property Details</h3>
+          <p>
+            <label for="">Property Name :</label>  <%= property.propertyName %> <br>
+            <label for="">Address :</label>  <%= property.address %><br>
+            <label for="">City :</label>  <%= property.city %><br>
+            <label for="">Bedrooms :</label>  <%= property.numberOfBeds %><br>
+            <label for="">Living Rooms :</label>  <%= property.propertyName %><br>
+            <label for="">Owner Name :</label>  <%= property.firstName %> <%= property.secondName %><br>
+            <label for="">Cost :</label> $ <strong><%= property.cost %></strong> <br>
+            <hr width="90%">
+          </p>
+            <a href="/lease/<%= property.propertyId %>">
+              <button  class="lease-btn">Lease Now</button>
+          </a>
+        </div>
+      </div> 
+  </div>
+    
+</body>
+</html>

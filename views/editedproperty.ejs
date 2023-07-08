@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin-Edits</title>
+    <link rel="stylesheet" href="/css/style.css">  
+</head>
+<body >
+  <%- include('partial/header')%>
+    <div class="panel_list">
+        <div  style="width: fit-content; display: relative; margin: 0px auto;" class="approvals">
+            <h1 class="approval">Admin Approvals</h1>
+            <hr>
+        </div>
+        <div class="menu">
+            
+            <span id="admin-link">
+                <a href="/admin">Uploaded</a>
+            </span>
+            <span style="background-color: rgb(234, 217, 205); " id="admin-link">
+                <a style="color: black;" href="/editedproperty">Edited</a>
+            </span>
+            <span id="admin-link">
+                <a href="/deleted">Deleted</a>
+            </span>
+        </div>
+    </div>   
+    <div class="admin-detail">
+        <img src="/img/pic1.jpg" height="60px"  style="align-items: center;" alt="Admin photo">
+        <small><a style="text-decoration: none;" href="">My Profile</a></small>
+    </div>
+        <!-- Uploads -->
+        <h2  style="margin-top: 10px;" class="">Land Lord Edited Property</h2>
+
+        <div class="recent_post">
+            <div class="admin-Uploads">
+              <div class="pending">
+                <img src="img/cat-4.jpg" alt="" height="100px" width="100%">
+              </div>
+              <!-- Land lord and Property details -->
+              <div class="lease">
+                Owner's Name: Kelly <br>
+                Cost: $200 <br>
+                Type: Banglow <br>
+                Contact: +256 784344558 <br>
+                Property Name: Kyanja WP6453 <br> 
+                Date Of Post: 22-09-2023
+              </div>
+              <!-- Amin Approvals-->
+              <div class="lease decision">
+                <button id="decision">Approve</button> <br>
+                <button id="decision">Deny</button> <br>
+              </div>
+            </div>
+        </div>
+        <div class="recent_post">
+            <div class="admin-Uploads">
+              <div class="pending">
+                <img src="img/cat-4.jpg" alt="" height="100px" width="100%">
+              </div>
+              <!-- Land lord and Property details -->
+              <div class="lease">
+                Owner's Name: Kelly <br>
+                Cost: $200 <br>
+                Type: Banglow <br>
+                Contact: +256 784344558 <br>
+                Property Name: Kyanja WP6453 <br> 
+                Date Of Post: 22-09-2023
+              </div>
+              <!-- Amin Approvals-->
+              <div class="lease decision">
+                <button id="decision">Approve</button> <br>
+                <button id="decision">Deny</button> <br>
+              </div>
+            </div>
+        </div>
+        <%- include('partial/footer')%>
+
+</body>
+</html>

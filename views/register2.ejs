@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <title>Create an account 2</title>
+</head>
+<body class="login_bckg">
+    <div class = "entire" style="margin-top: 10px;">
+        <div class="top">
+            <div class="logo">
+                <img src="/img/Global-logo.PNG" alt="global-properties logo" height="80px" width="80px" style="border-radius:50%;">
+            </div>
+            <div>
+                <h2>Create Your Account</h2>
+                <p>
+                    Lets get started by creating your account. To keep your account safe, we need a strong password
+                </p>
+            </div>
+        </div>
+        <form action="/register/Two" method="post">
+            <div class="fields">
+                <div>
+                    <p>
+                        <input class="textbox" type="password" id="password" name="password" placeholder="Password" required>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <input class="textbox" type="password" id="confirm_password" name="confirm_password" 
+                        placeholder="Confirm Password" required>
+                    </p>
+                </div>
+            </div>
+            <div class="next">
+                <div>
+                    <input type="submit" id="btn-pass"  value="CONTINUE" class="textbox btn btn-primary " style="background-color: #4287f5" required>
+                </div>
+            </div>
+        </form>
+        
+        <div class="footer">
+            <div>
+                <p>Contact our support team for an support at <a href="globalsupport@gmail.com" style="color: blue;">globalsupport@gmail.com</a></p>
+            </div>
+       </div>   
+        </div>
+    </div>
+    <script>
+        
+        function check() {
+            let password = document.getElementById('password');
+            let confirm_password = document.getElementById('confirm_password');
+            
+            if (password.value != confirm_password.value){
+                alert("Check Password match")
+            }
+        }
+        var btn = document.getElementById('btn-pass');
+        btn.addEventListener('click',check)
+
+    </script>
+</body>
+</html>

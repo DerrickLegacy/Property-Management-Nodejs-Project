@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Global Masters Uganda</title>
+    <meta content="width=device-width, initial-s  cale=1.0" name="viewport">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('partial/header') %>
+      <div class="main-middle-boddy">
+        <div class="messagebar col col-lg-8.5" style="margin: 0 0px 0 10px; ">
+          <div class="username" style="color: black;"><%= username %></div>
+          <div class="notification" >Notifications</div>
+        </div>
+        
+        <h1 align="center" class="post_header">Post Property</h1>
+        <div class="recent_post">
+          <div class="post">
+            <form action="/postProperty" method="POST" enctype="multipart/form-data" class="row g-3">
+            <div class="col-md-6">
+                <label for="propertyName" class="form-label">Property Name</label>
+                <input type="text" class="form-control"required name="propertyName" id="propertyName">
+              </div>
+              <div class="col-md-6">
+                <label for="type" class="form-label">Type</label>
+                <input type="text" name="type" class="form-control" id="type" required>
+              </div>
+              <div class="col-12">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" name="address" class="form-control" id="inputAddress" required placeholder="1234 Main St">
+              </div>
+              <div class="col-md-6">
+                <label for="bedroom" class="form-label">Number of Bed Rooms</label>
+                <input type="text" name="numberOfBedroom" class="form-control" id="bedroom" required>
+              </div>
+              <div class="col-md-6">
+                <label for="room" class="form-label">Number Of Rooms</label>
+                <input type="text" name="numberOfRooms" class="form-control" id="room" required>
+              </div>
+              <div class="col-md-6">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" name="image" class="form-control" id="image" required>
+              </div>
+              <div class="col-md-6 row-cols-lg-20">
+                <label for="type" class="form-label">Post Date</label>
+                <input type="date" name="postDate" class="form-control" id="type" required>
+              </div>
+              <div class="col-md-6">
+                <label for="cost" class="form-label">Cost Now($)</label>
+                <input type="number"  name="cost" data-type="currency" class="form-control" id="cost" placeholder="e.g 10,00" required>
+              </div>
+              <div class="col-md-6">
+                <label for="costBefore" class="form-label">Cost Before ($)</label>
+                <input type="number"  name="costBefore" required data-type="currency" class="form-control" id="cost" placeholder="e.g 10,00">
+              </div >
+              <div class="col-md-2">
+                <label for="inputCity" class="form-label">City</label>
+                <select id="inputState" name="city" required class="form-select">
+                  <option >Mukono</option>
+                  <option>Masaka</option>
+                  <option>Kampala</option>
+                  <option selected>Hoima</option>
+                  <option>Fort Portal</option>
+                  <option>Masindi</option>
+                  <option>Mbale</option>
+                  <option>Other..</option>
+                </select>
+              </div>
+              <div class="col-4">
+                <label for="inputState" class="form-label" required>State</label>
+                <input type="text" name="state" class="form-control" id="inputCity">
+              </div>
+              <div class="col-md-2">
+                <label for="inputZip" class="form-label">Zip</label>
+                <input type="text" name="zipCode" class="form-control" id="inputZip" required>
+              </div>
+              <div class="recent_buttons" style="margin-top: 69.98px;margin-right: 140px;">
+                <button type="submit" class="btn btn-primary">Submit for review</button>
+              </div>
+            </form>
+          </div>
+        </div>
+       
+        
+      <!-- Pending POsts -->
+      <h1 align="center" class="post_header">Pending Approvals By Admin</h1>
+        <div class="post">
+          <% if (results.length>0) { 
+            results.forEach( function(data){ %>
+              <div class="pending">
+                <img src="/img/<%= data.image %>" alt="" height="100px" width="100%">
+              </div>  
+              <div class="pending_details">
+                <label><strong>Property Name:</strong></label><%= data.propertyName %><br>
+                <label><strong>Location:</strong></label> <%= data.address %> <br>
+                <label ><strong>Submission Date:</strong></label> <%= data.postDate %> <br> 
+                <div class="pending_action recent_buttons">
+                  <a href="/delete/<%= data.propertyId %>" style="text-decoration: none;">
+                    <button class="btn btn-secondary" style="background-color: rgb(247, 84, 84);" >Delete</button>
+                  </a>
+                  <a href="/Edit/<%= data.propertyId %>" style="text-decoration: none;">
+                    <button class="btn btn-secondary"  >Edit</button>
+                  </a>  
+                </div>
+              </div>
+              <hr>
+
+          <%  });
+          }else{ %>
+            <p style=" color: brown; ">All Property Were Approved</p>
+          <% } %>  
+        </div>
+        <br>
+      
+      <!-- Cleint Lease Requests -->
+      <h1 align="center" class="post_header">Client Lease Requests</h1>
+      <div class="post">
+        <% if (result1.length>0) { 
+          result1.forEach( function(data){ %>
+            <div class="pending">
+              <img src="/img/<%= data.image %>" alt="" height="100px" width="100%">
+            </div>  
+            <div class="pending_details">
+              <label><strong>Property Name:</strong></label><%= data.propertyName %><br>
+              <label><strong>Location:</strong></label> <%= data.address %> <br>
+              <label ><strong>Submission Date:</strong></label> <%= data.postDate %> <br> 
+              <div class="pending_action recent_buttons">
+                <a href="/delete/<%= data.propertyId %>" style="text-decoration: none;">
+                  <button class="btn btn-secondary" style="background-color: rgb(247, 84, 84);" >Delete</button>
+                </a>
+                <a href="/Edit/<%= data.propertyId %>" style="text-decoration: none;">
+                  <button class="btn btn-secondary"  >Edit</button>
+                </a>
+              </div>
+            </div>
+            <hr>
+
+        <%  });
+        }else{ %>
+          <p style=" color: brown; ">No Requests yet!</p>
+        <% } %>  
+      </div>
+        <div class="newProperty ">
+          <a href="/recentPost">
+            <button class="btn btn-primary">Back To Recent Posts</button>
+          </a>
+        </div>
+      </div> 
+
+    <%- include('partial/footer') %>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Global Masters Uganda</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+      /* Styling for main page */
+    #main-page {
+      position: relative;
+      z-index: 1;
+      /* background-color: #f0f0f0; */
+    }
+  
+    /* Styling for popup */
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(178, 153, 153, 0.5);
+      z-index: 2;
+    }
+    #popupDelete {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(178, 153, 153, 0.5);
+      z-index: 2;
+    }
+  
+    #popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    #popup-content-delete {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+  
+    #close-popup {
+      margin-top: 10px;
+    }
+    </style>
+</head>
+
+<body >
+    <%- include('partial/header') %>
+    <!-- MAIN BODDyyyy -->
+      <div id="main-page">
+        <div class="messagebar col col-lg-11.5" style="margin: 0 0px 0 10px; text-align: left;">
+          <div class="username"><%= username %></div>
+          <div class="notification" >Notifications</div>
+        </div>
+        <h1 align="center">Recent Posts</h1>
+        <% if (results.length>0) { 
+          results.forEach( function(data){ %>
+        <div class="recent_post">
+        <div class="post">
+          <div class="post_image" >
+            <img src="img/<%= data.image %>"style="border-radius6px" alt="" height="250px" width="100%">
+          </div>
+          <div class="post_detail" style="margin-left: 400px;">
+            <p>
+            <strong>Property Name: </strong><%=data.propertyName %>  <br>
+            <strong>Type:</strong> <%= data.type %> <br>
+            <strong>Address:</strong> <%= data.address %><br>
+            <strong>Room(s):</strong> <%= data.numberOfRooms %> <br>
+            <strong>Cost:</strong> <%= data.cost %> <br>
+            <hr width="80%">
+            <strong>Owner:</strong> <%= data.firstName %> <%= data.secondName %> <br>
+            <strong>Email:</strong> <%= data.email %><br>
+            <strong>Post Date:</strong> <%= data.postDate %>
+          </p>
+          </div>
+          <div class="recent_buttons">
+              <button id="open-popup-delete" class="btn btn-secondary" style="background-color: rgb(247, 84, 84);">Delete</button>
+              <button  class="btn btn-secondary" id="open-popup">Edit</button>
+          </div>
+        </div>
+      </div>
+      <!--Message po Popup content -->
+      <div id="popup">
+        <div id="popup-content">
+          <h2 align="center">Status</h2>
+          <h3>Continue to edit</h3>
+            <a href="/edit/<%=data.propertyId %>" id="close-popup" >
+              <button>OK</button>
+            </a>
+            <a href="/recentPost" id="close-popup" >
+              <button>X</button>
+            </a>
+        </div>
+      </div>
+      <div id="popupDelete">
+        <div id="popup-content-delete">
+          <h3 align="center" style="color: red;">Warning!</h3>
+          <p>The Deleted File Won't be Recovered</p>
+            <a href="/recent/delete/<%=data.propertyId%>" >
+              <button>OK</button>
+            </a>
+            <a href="/landlord" >
+              <button>X</button>
+            </a>
+        </div>
+      </div>
+      <%  });
+      }else{ %>
+        <p style=" color: brown; ">No Recent Property Updated Yet</p>
+      <% } %>
+      
+      <div class="newProperty">
+        <a href="/postProperty" >
+          <button class="btn btn-primary" >Post Or Add Property</button>
+        </a>
+      </div>
+        
+      </div>
+<%-include('partial/footer') %>
+<script>
+  // Open popup
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+  }
+  document.getElementById("open-popup").addEventListener("click", openPopup);
+
+  function openPopupDelete() {
+    document.getElementById("popupDelete").style.display = "block";
+  }
+  document.getElementById("open-popup-delete").addEventListener("click", openPopupDelete);
+
+
+</script>
+
+
+</body>
+
+</html>

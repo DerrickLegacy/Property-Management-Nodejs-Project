@@ -62,7 +62,7 @@ app.post('/',encoder, (req,res) => {
             res.redirect('/homepage'); 
           }
         } else {
-          res.redirect('/login');
+          res.redirect('/index');
         }
         res.end();
     });
@@ -110,7 +110,7 @@ app.post('/register/Four', (req, res) => {
     conn.query(sql, values, (err, result) => {
         if (err) throw err;
         console.log('Form data inserted into MySQL!');
-        res.redirect('/login');
+        res.redirect('/index');
     });
    
     // Clear the formData object for future submissions
@@ -205,8 +205,8 @@ app.listen(3600,(err)=> {
     console.log("Server running on port 3600")
 });
 
-app.get('/login', (req, res) => {
-  res.render('login')
+app.get('/', (req, res) => {
+  res.render('index')
 });
 
 app.get('/edit/:id', (req, res)=>{
